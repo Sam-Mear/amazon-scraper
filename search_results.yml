@@ -8,6 +8,11 @@ products:
             css: 'h2 a.a-link-normal.a-text-normal'
             xpath: null
             type: Text
+        image:
+            css: 'img.s-image'
+            xpath: null
+            type: Attribute
+            attribute: src
         url:
             css: 'h2 a.a-link-normal.a-text-normal'
             xpath: null

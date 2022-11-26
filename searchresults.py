@@ -1,13 +1,13 @@
 from selectorlib import Extractor
-import requests 
-import json 
+import requests
+import json
 from time import sleep
 
 
 # Create an Extractor by reading from the YAML file
 e = Extractor.from_yaml_file('search_results.yml')
 
-def scrape(url):  
+def scrape(url):
 
     headers = {
         'dnt': '1',
@@ -32,18 +32,24 @@ def scrape(url):
         else:
             print("Page %s must have been blocked by Amazon as the status code was %d"%(url,r.status_code))
         return None
-    # Pass the HTML of the page and create 
+    # Pass the HTML of the page and create
     return e.extract(r.text)
 
 # product_data = []
 with open("search_results_urls.txt",'r') as urllist, open('search_results_output.jsonl','w') as outfile:
     for url in urllist.read().splitlines():
-        data = scrape(url) 
+        data = scrape(url)
         if data:
-            for product in data['products']:
+            for index, product in enumerate(data['products']):
                 product['search_url'] = url
+                response = requests.get(product['image'])
+                print(index)
+                print(response.status_code)
+                if response.status_code:
+                    with open(f'./pictures/{index+1}.jpg', 'wb') as fp:
+                        fp.write(response.content)
+                        fp.close()
                 print("Saving Product: %s"%product['title'])
                 json.dump(product,outfile)
-                outfile.write("\n")
+                outfile.write(",\n")
                 # sleep(5)
-    
