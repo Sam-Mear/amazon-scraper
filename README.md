@@ -82,10 +82,10 @@ Each result would look similar
 }
 ```
 
-### FAQ
+## FAQ
 **- I am seeing `\u*` before my outputs(for example in price)**
 *This is a unicode symbol. For example: `\u00a3` is a UK pound sign, so `\u00a3250.00` would be `£250` if you encoded the unicode character.*
 
-**- The URL output from `searchresults.py` arent a full URL**
+**- The URL output from `searchresults.py` is not a full URL**
 *Add `https://www.amazon.co.uk` in front of it. (Or whatever amazon region you want to scrape, this example goes to .co.**uk**)*
 
