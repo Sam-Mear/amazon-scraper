@@ -42,5 +42,5 @@ with open("urls.txt",'r') as urllist, open('output.jsonl','w') as outfile:
         if data:
             json.dump(data,outfile)
             outfile.write("\n")
-            # sleep(5)
+        sleep(2)
     

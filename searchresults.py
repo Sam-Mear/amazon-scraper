@@ -52,4 +52,4 @@ with open("search_results_urls.txt",'r') as urllist, open('search_results_output
                 print("Saving Product: %s"%product['title'])
                 json.dump(product,outfile)
                 outfile.write(",\n")
-                # sleep(5)
+        sleep(2)
