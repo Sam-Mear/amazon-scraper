@@ -43,12 +43,12 @@ with open("search_results_urls.txt",'r') as urllist, open('search_results_output
             for index, product in enumerate(data['products']):
                 product['search_url'] = url
                 response = requests.get(product['image'])
-                print(index)
-                print(response.status_code)
-                if response.status_code:
-                    with open(f'./pictures/{index+1}.jpg', 'wb') as fp:
-                        fp.write(response.content)
-                        fp.close()
+#                print(index)
+#                print(response.status_code)
+#                if response.status_code:
+#                    with open(f'./pictures/{index+1}.jpg', 'wb') as fp:
+#                        fp.write(response.content)
+#                        fp.close()
                 print("Saving Product: %s"%product['title'])
                 json.dump(product,outfile)
                 outfile.write(",\n")

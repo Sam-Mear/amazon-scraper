@@ -39,6 +39,7 @@ def scrape(url):
 with open("urls.txt",'r') as urllist, open('output.jsonl','w') as outfile:
     for url in urllist.read().splitlines():
         data = scrape(url) 
+        data['price'] = data['price'].split()[0]#It gets two different prices. This only makes it output one.
         if data:
             json.dump(data,outfile)
             outfile.write("\n")
