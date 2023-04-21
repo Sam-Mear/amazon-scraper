@@ -29,7 +29,7 @@ From a terminal
 This scraper only scrapes product from the first page of search results
 
 1. Add Amazon Product URLS to [search_results_urls.txt](search_results_urls.txt)
-1. Run `python3 searchresults.py`
+1. Run `python3 searchresults.py` or `python3 searchresults.py -removeAds` to run and not include the ads
 1. Get data from [search_results_output.jsonl](search_results_output.jsonl)
 
 ## Example Data Format
