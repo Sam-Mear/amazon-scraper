@@ -7,7 +7,7 @@ from time import sleep
 
 
 # Create an Extractor by reading from the YAML file
-e = Extractor.from_yaml_file('search_results.yml')
+e = Extractor.from_yaml_file('CSS-selectors/search_results.yml')
 
 def scrape(url):
 
@@ -54,7 +54,7 @@ def scrape(url):
 
 def main():
     # product_data = []
-    with open("search_results_urls.txt",'r') as urllist, open('search_results_output.jsonl','w') as outfile:
+    with open("search_results_urls.txt",'r') as urllist, open('output/search_results_output.jsonl','w') as outfile:
         for url in urllist.read().splitlines():
             data = scrape(url)
             if data:
