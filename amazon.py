@@ -35,13 +35,13 @@ def scrape(url):
     # Pass the HTML of the page and create 
     return e.extract(r.text)
 
-# product_data = []
-with open("urls.txt",'r') as urllist, open('output/product.jsonl','w') as outfile:
-    for url in urllist.read().splitlines():
-        data = scrape(url) 
-        data['price'] = data['price'].split()[0]#It gets two different prices. This only makes it output one.
-        if data:
-            json.dump(data,outfile)
-            outfile.write("\n")
-        sleep(2)
-    
+if __name__ == "__main__":
+    with open("urls.txt",'r') as urllist, open('output/product.jsonl','w') as outfile:
+        for url in urllist.read().splitlines():
+            data = scrape(url) 
+            data['price'] = data['price'].split()[0]#It gets two different prices. This only makes it output one.
+            if data:
+                json.dump(data,outfile)
+                outfile.write("\n")
+            sleep(2)
+        
