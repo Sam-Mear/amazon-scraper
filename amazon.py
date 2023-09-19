@@ -1,3 +1,4 @@
+import sys
 from selectorlib import Extractor
 import requests 
 import json 
@@ -35,7 +36,10 @@ def scrape(url):
     # Pass the HTML of the page and create 
     return e.extract(r.text)
 
-if __name__ == "__main__":
+def scrapeSearchResults():
+    pass
+
+def scrapeFromFile():
     with open("urls.txt",'r') as urllist, open('output/product.jsonl','w') as outfile:
         for url in urllist.read().splitlines():
             data = scrape(url) 
@@ -44,4 +48,15 @@ if __name__ == "__main__":
                 json.dump(data,outfile)
                 outfile.write("\n")
             sleep(2)
+
+if __name__ == "__main__":
+    #Check if user wants to get more info the results of the search
+    if(len(sys.argv) > 1):
+        if(sys.argv[1]== "-searchResults"):
+            scrapeSearchResults()
+        else:
+            print("invalid argument")
+    else:
+        scrapeFromFile()
+
         
